@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.11
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplyQueryAttributesTest", "ApplyQueryAttributesTest\ApplyQueryAttributesTest.csproj", "{8780CE61-EBB8-49D3-9C87-97CE7D470B8F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8780CE61-EBB8-49D3-9C87-97CE7D470B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8780CE61-EBB8-49D3-9C87-97CE7D470B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8780CE61-EBB8-49D3-9C87-97CE7D470B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8780CE61-EBB8-49D3-9C87-97CE7D470B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82291B0A-4CB3-49B9-9AA2-317E1F22316F}
+	EndGlobalSection
+EndGlobal
