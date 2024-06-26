@@ -1,25 +1,69 @@
-﻿namespace ApplyQueryAttributesTest;
+﻿using System.Diagnostics;
+using CommunityToolkit.Mvvm.Input;
+using D8.Maui.Components.Gestures;
+
+namespace ApplyQueryAttributesTest;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	private int _initialZIndex;
+	
+	private Dictionary<string, object> _routeParameters = new()
+	{
+		{ "MyParam", "MyParamValue" }
+	};
 
 	public MainPage()
 	{
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
+    private void TapGestureRecognizer_Tapped(object? sender, TappedEventArgs e)
+    {
+		if (sender is not VisualElement visualElement)
+            return;
+
+        if (IsZIndexSetEnabled)
+		{
+			Debug.WriteLine("Initial Z Index: " + visualElement.ZIndex);
+			_initialZIndex = visualElement.ZIndex;
+			visualElement.ZIndex = 1000;
+		}
+    }
+
+    public static readonly BindableProperty IsZInexSetEnabledProperty = BindableProperty.Create(nameof(IsZIndexSetEnabled), typeof(bool), typeof(MainPage), false);
+	public bool IsZIndexSetEnabled 
 	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
+		get => (bool)GetValue(IsZInexSetEnabledProperty);
+		set => SetValue(IsZInexSetEnabledProperty, value);
 	}
+
+	private void DragGestureRecognizer_PanCompleted(object? sender, PanCompletedEventArgs e)
+    {
+        if (sender is not VisualElement visualElement)
+            return;
+
+
+		if (IsZIndexSetEnabled)
+        	visualElement.ZIndex = _initialZIndex;
+    }
+
+    private void DragGestureRecognizer_PanStarted(object? sender, EventArgs e)
+    {
+        if (sender is not VisualElement visualElement)
+            return;
+
+        
+
+		// if (IsZIndexSetEnabled)
+		// {
+		// 	Debug.WriteLine("Initial Z Index: " + visualElement.ZIndex);
+		// 	_initialZIndex = visualElement.ZIndex;
+		// 	visualElement.ZIndex = 1000;
+		// }
+        
+    }
+    
 }
 
 
